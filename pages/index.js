@@ -35,40 +35,40 @@ export default function Home() {
 
   return (
     <LoadingOverlay
-        active={isLoadingSearch}
-        spinner
-        text="Searching...">
-  <div className='h-screen'>
-    <div className=''>
-    <Header />
-    </div>
-   <hr />
-   <div className='flex justify-center items-center flex-col pt-8 pb-8'>
-    <h2 className='text-3xl mb-32 text-slate-800'>Welcome to Price HERO</h2>
-      <div className='flex justify-center'>
-         <h2 className="text-2xl">
-            Enter product to search for:
-         </h2>
-         <input className='rounded-md outline outline-offset-2 outline-1 ml-3 pl-2' type='text' onChange={e => setSearchField(e.target.value)}/>
-      </div>
-      <div>
-         <button className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-md mt-5' onClick={ handleSubmitButtonPressed }>Submit</button>
-      </div>
-      </div>
-      <hr />
-      <section className="text-gray-600 body-font">
-         <div className="container px-5 py-24 mx-auto">
-            <div className="flex flex-col text-center w-full mb-10">
-               <h1 className="text-2xl font-medium title-font mb-4 text-gray-900">
-                  Search to find the best prices for your favorite items
-               </h1>
-               <p className="lg:w-2/3 mx-auto leading-relaxed text-base">
-                  Our application will parse Amazon, Target, and Walmart for the items you are looking for and display them to you to help you find the best deals and save you money!
-               </p>
+      active={isLoadingSearch}
+      spinner
+      text="Searching...">
+      <div className='h-screen'>
+          <div className=''>
+            <Header />
+          </div>
+          <hr />
+          <div className='flex justify-center items-center flex-col pt-8 pb-8'>
+            <h2 className='text-3xl mb-32 text-slate-800'>Welcome to Price HERO</h2>
+            <div className='flex justify-center'>
+                <h2 className="text-2xl">
+                  Enter product to search for:
+                </h2>
+                <input className='rounded-md outline outline-offset-2 outline-1 ml-3 pl-2' type='text' onChange={e => setSearchField(e.target.value)}/>
             </div>
-            <div className="flex flex-wrap -m-4">
-              {searchResults.map((element, index) => {
-                return(
+            <div>
+                <button className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-md mt-5' onClick={ handleSubmitButtonPressed }>Submit</button>
+            </div>
+          </div>
+          <hr />
+          <section className="text-gray-600 body-font">
+            <div className="container px-5 py-24 mx-auto">
+                <div className="flex flex-col text-center w-full mb-10">
+                  <h1 className="text-2xl font-medium title-font mb-4 text-gray-900">
+                      Search to find the best prices for your favorite items
+                  </h1>
+                  <p className="lg:w-2/3 mx-auto leading-relaxed text-base">
+                      Our application will parse Amazon, Target, and Walmart for the items you are looking for and display them to you to help you find the best deals and save you money!
+                  </p>
+                </div>
+                <div className="flex flex-wrap -m-4">
+                  {searchResults.map((element, index) => {
+                  return(
                   <div key={index} className="p-4 lg:w-1/4 md:w-1/2">
                       <div className="h-full flex flex-col items-center text-center">
                         <Image
@@ -87,19 +87,17 @@ export default function Home() {
                               Seller: {element.merchantName}
                             </p>
                             <span className="inline-flex">
-                              <a className="text-blue-500" href={element.merchantLink}>View Product</a>
+                            <a className="text-blue-500" href={element.merchantLink}>View Product</a>
                             </span>
                         </div>
                       </div>
                   </div>
-                );
-              })}
-               
-
+                  );
+                  })}
+                </div>
             </div>
-         </div>
-      </section>
-</div>
-</LoadingOverlay>
+          </section>
+      </div>
+    </LoadingOverlay>
   );
 }
