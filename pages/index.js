@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import Image from 'next/image';
-import { useState } from 'react';
+import { use, useState } from 'react';
 import styles from '../styles/Home.module.css';
 import axios from 'axios';
 import { Cheerio } from 'cheerio';
@@ -8,26 +8,28 @@ import Header from './header';
 
 export default function Home() {
   const [searchField, setSearchField] = useState('');
+  const [searchResults, setSearchResults] = useState([]);
+  const [id, setId] = useState(5);
 
 
-  async function handleSubmitButtonPressed(){
-    // console.log(searchField)
-    console.log(searchField);
+  async function handleSubmitButtonPressed() {
+    const productResults = await fetchProductResults(searchField);
+    console.log(productResults);
+    setSearchResults(productResults);
   }
 
-  async function fetchAmazonResults(searchKeyword) {
+  async function handlePrintByIdPressed() {
+    getInfoById(id);
+  }
+
+  async function getInfoById(id) {
+   console.log(searchResults[id]);
+  }
+
+  async function fetchProductResults(searchKeyword) {
     try {
-        // console.log(`https://www.amazon.com/s?k=${searchKeyword}`)
-        const response = await fetch(`https://www.amazon.com/s?k=${searchKeyword}`);
-        const html = response.data;
-        const $ = Cheerio.load(html);
-        const results = [];
-  $('div.sg-col-4-of-12.s-result-item.s-asin.sg-col-4-of-16.sg-col.sg-col-4-of-20').each((_idx, el) => {
-            const result = $(el)
-            const title = result.find('span.a-size-base-plus.a-color-base.a-text-normal').text()
-            results.push(title)
-        });
-        return results;
+        const response = await fetch(`/api/apify?itemToSearch=${searchKeyword}`);
+        return response.json();
     } catch (error) {
         throw error;
     }
@@ -36,15 +38,18 @@ export default function Home() {
   return (
   <div>
    <Header />
+   {/* <LoadingSpinner disabled={!isLoading} /> */} 
    <div className='flex justify-center items-center h-screen flex-col'>
       <div className='flex justify-center'>
          <h1 className="text-2xl">
             Enter product to search for:
          </h1>
          <input className='rounded-md outline outline-offset-2 outline-1 ml-3' type='text' onChange={e => setSearchField(e.target.value)}/>
+         <input className='rounded-md outline outline-offset-2 outline-1 ml-3' type='text' onChange={e => setId(e.target.value)}/>
       </div>
-      <div className=''>
+      <div>
          <button className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-md mt-5' onClick={ handleSubmitButtonPressed }>Submit</button>
+         <button className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-md mt-5' onClick={ handlePrintByIdPressed }>Print Data By ID</button>
       </div>
       <section className="text-gray-600 body-font">
          <div className="container px-5 py-24 mx-auto">
@@ -186,7 +191,7 @@ export default function Home() {
                         />
                      <div className="w-full">
                         <h2 className="title-font font-medium text-lg text-gray-900">
-                           Atticus Finch
+                           Thotticus Finch
                         </h2>
                         <h3 className="text-gray-500 mb-3">UI Developer</h3>
                         <p className="mb-4">
