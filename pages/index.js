@@ -12,7 +12,7 @@ export default function Home() {
 
   async function handleSubmitButtonPressed(){
     // console.log(searchField)
-    console.log(await fetchAmazonResults(searchField))
+    console.log(searchField);
   }
 
   async function fetchAmazonResults(searchKeyword) {
@@ -302,5 +302,5 @@ export default function Home() {
       </section>
    </div>
 </div>
-  )
+  );
 }
