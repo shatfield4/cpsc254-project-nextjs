@@ -13,6 +13,7 @@ export default async function handler(req, res) {
         "queries": [
             itemToSearch.toString()
         ],
+        "maxPostCount": 30,
         "extendOutputFunction": ($) => {
             const result = {};
             // Uncomment to modify the title of each item of the output
