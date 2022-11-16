@@ -2,11 +2,13 @@
   "name": "cpsc254-project-nextjs",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "test": "mocha test"
   },
   "dependencies": {
     "apify-client": "^2.6.1",
@@ -15,12 +17,17 @@
     "cors": "^2.8.5",
     "next": "13.0.3",
     "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react-dom": "18.2.0",
+    "save-dev": "^0.0.1-security"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.13",
+    "chai": "^4.3.7",
+    "cypress": "^11.1.0",
     "eslint": "8.27.0",
     "eslint-config-next": "13.0.3",
+    "mocha": "^10.1.0",
+    "nyc": "^15.1.0",
     "postcss": "^8.4.19",
     "tailwindcss": "^3.2.4"
   }
