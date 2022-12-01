@@ -12,7 +12,8 @@ export default function Home() {
   async function handleSubmitButtonPressed() {
     setIsLoadingSearch(true);
     const productResults = await fetchProductResults(searchField);
-    setSearchResults(productResults.response);
+    const sortedResults = productResults.response.sort(function(a,b){return parseFloat(a.price.replace(/[A-Z]/gi, '').replace('$','').replace(' ', '').replace(',', '')) - parseFloat(b.price.replace(/[A-Z]/gi, '').replace('$','').replace(' ', '').replace(',', ''))});
+    setSearchResults(sortedResults);
     setIsLoadingSearch(false);
   }
 
