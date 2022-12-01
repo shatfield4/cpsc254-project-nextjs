@@ -5,7 +5,7 @@ export default async function handler(req, res) {
 
     // Initialize the ApifyClient with API token
     const client = new ApifyClient({
-        token: 'apify_api_oFDUjvK1v1GWB7DS6pqTjjqfXpvVAW1bl7My',
+        token: 'apify_api_I913XJxMvzhTkfyeepmVMj23mf30OH1rVjnD',
     });
 
     // Prepare actor input
