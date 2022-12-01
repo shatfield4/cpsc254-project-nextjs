@@ -2,6 +2,8 @@ import Image from 'next/image';
 import { useState } from 'react';
 import Header from './header';
 import LoadingOverlay from 'react-loading-overlay-ts';
+import { FaSearch, FaEye } from 'react-icons/fa'; 
+
 
 export default function Home() {
   const [searchField, setSearchField] = useState('');
@@ -45,15 +47,18 @@ export default function Home() {
           </div>
           <hr />
           <div className='flex justify-center items-center flex-col pt-8 pb-8'>
-            <h2 className='text-3xl mb-32 text-slate-800'>Welcome to Price HERO</h2>
+            <h2 className='text-3xl mb-32 text-slate-900 font-semibold'>Welcome to Price HERO</h2>
             <div className='flex justify-center'>
                 <h2 className="text-2xl">
                   Enter product to search for:
                 </h2>
-                <input className='rounded-md outline outline-offset-2 outline-1 ml-3 pl-2' type='text' onChange={e => setSearchField(e.target.value)}/>
+                
             </div>
-            <div>
-                <button className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-md mt-5' onClick={ handleSubmitButtonPressed }>Submit</button>
+            <div className='flex justify-center items-center pt-8'>
+            <div className='bg-gray-200 p-6 rounded-full'>
+              <input className='bg-gray-200 rounded-md outline outline-offset-2 outline-0 ml-3 pl-4 h-10 w-72 text-left text-2xl' type='text' onChange={e => setSearchField(e.target.value)}/>
+              <button className='bg-transparent font-semibold py-2 px-4 rounded text-3xl' onClick={ handleSubmitButtonPressed }><FaSearch/></button>
+              </div>
             </div>
           </div>
           <hr />
@@ -67,36 +72,30 @@ export default function Home() {
                       Our application will parse Amazon, Target, and Walmart for the items you are looking for and display them to you to help you find the best deals and save you money!
                   </p>
                 </div>
-                <div className="flex flex-wrap -m-4">
+                <table class='border-collapse table-fixed w-full text-sm'>
+                  <thead>
+                    <tr>
+                      <th class="border-b dark:border-slate-600 font-medium p-4 pl-8 pt-0 pb-3 text-black dark:text-slate-200 text-left">Product</th>
+                      <th class="border-b dark:border-slate-600 font-medium p-4 pr-8 pt-0 pb-3 text-black dark:text-slate-200 text-left">Merchant</th>
+                      <th class="border-b dark:border-slate-600 font-medium p-4 pr-8 pt-0 pb-3 text-black dark:text-slate-200 text-left" >Price</th>
+                      <th class="border-b dark:border-slate-600 font-medium p-4 pr-8 pt-0 pb-3 text-black dark:text-slate-200 text-left">View</th>
+                    </tr>
+                  </thead>
+                  <tbody>
                   {searchResults.map((element, index) => {
                   return(
-                  <div key={index} className="p-4 lg:w-1/4 md:w-1/2">
-                      <div className="h-full flex flex-col items-center text-center">
-                        <Image
-                            alt="team"
-                            className="flex-shrink-0 rounded-lg w-full h-56 object-cover object-center mb-4"
-                            src={`/api/imageProxy?imageUrl=${"https://dummyimage.com/200x200"}`}
-                            width={200}
-                            height={200}
-                            />
-                        <div className="w-full">
-                            <h2 className="title-font font-medium text-lg text-gray-900">
-                              {element.productName}
-                            </h2>
-                            <h3 className="text-gray-500 mb-3">{element.price}</h3>
-                            <p className="mb-4">
-                              Seller: {element.merchantName}
-                            </p>
-                            <span className="inline-flex">
-                            <a className="text-blue-500" href={element.merchantLink}>View Product</a>
-                            </span>
-                        </div>
-                      </div>
-                  </div>
+                    <tr>
+                      <td class="border-b dark:border-slate-600 font-medium p-4 pr-8 pt-0 pb-3 text-slate-400 dark:text-slate-200 text-left">{element.productName}</td>
+                      <td class="border-b dark:border-slate-600 font-medium p-4 pr-8 pt-0 pb-3 text-slate-400 dark:text-slate-200 text-left">{element.merchantName}</td>
+                      <td class="border-b dark:border-slate-600 font-medium p-4 pr-8 pt-0 pb-3 text-slate-400 dark:text-slate-200 text-left">{element.price}</td>
+                      <td class="border-b dark:border-slate-600 font-medium p-4 pr-8 pt-0 pb-3 text-slate-400 dark:text-slate-200 text-left"><a className='' href={element.merchantLink}><FaEye className='text-2xl text-right'/></a></td>
+                    </tr>
                   );
                   })}
+                  </tbody>
+                </table>
                 </div>
-            </div>
+           
           </section>
       </div>
     </LoadingOverlay>
