@@ -52,7 +52,6 @@ export default function Home() {
                 <h2 className="text-2xl">
                   Enter product to search for:
                 </h2>
-                
             </div>
             <div className='flex justify-center items-center pt-8'>
             <div className='bg-gray-200 p-6 rounded-full'>
@@ -72,30 +71,29 @@ export default function Home() {
                       Our application will parse Amazon, Target, and Walmart for the items you are looking for and display them to you to help you find the best deals and save you money!
                   </p>
                 </div>
-                <table class='border-collapse table-fixed w-full text-sm'>
+                <table className='border-collapse table-fixed w-full text-sm'>
                   <thead>
                     <tr>
-                      <th class="border-b dark:border-slate-600 font-medium p-4 pl-8 pt-0 pb-3 text-black dark:text-slate-200 text-left">Product</th>
-                      <th class="border-b dark:border-slate-600 font-medium p-4 pr-8 pt-0 pb-3 text-black dark:text-slate-200 text-left">Merchant</th>
-                      <th class="border-b dark:border-slate-600 font-medium p-4 pr-8 pt-0 pb-3 text-black dark:text-slate-200 text-left" >Price</th>
-                      <th class="border-b dark:border-slate-600 font-medium p-4 pr-8 pt-0 pb-3 text-black dark:text-slate-200 text-left">View</th>
+                      <th className="border-b dark:border-slate-600 font-medium p-4 pl-8 pt-0 pb-3 text-black dark:text-slate-800 text-left">Product</th>
+                      <th className="border-b dark:border-slate-600 font-medium p-4 pr-8 pt-0 pb-3 text-black dark:text-slate-800 text-left">Merchant</th>
+                      <th className="border-b dark:border-slate-600 font-medium p-4 pr-8 pt-0 pb-3 text-black dark:text-slate-800 text-left" >Price</th>
+                      <th className="border-b dark:border-slate-600 font-medium p-4 pr-8 pt-0 pb-3 text-black dark:text-slate-800 text-left">View</th>
                     </tr>
                   </thead>
                   <tbody>
                   {searchResults.map((element, index) => {
                   return(
-                    <tr>
-                      <td class="border-b dark:border-slate-600 font-medium p-4 pr-8 pt-0 pb-3 text-slate-400 dark:text-slate-200 text-left">{element.productName}</td>
-                      <td class="border-b dark:border-slate-600 font-medium p-4 pr-8 pt-0 pb-3 text-slate-400 dark:text-slate-200 text-left">{element.merchantName}</td>
-                      <td class="border-b dark:border-slate-600 font-medium p-4 pr-8 pt-0 pb-3 text-slate-400 dark:text-slate-200 text-left">{element.price}</td>
-                      <td class="border-b dark:border-slate-600 font-medium p-4 pr-8 pt-0 pb-3 text-slate-400 dark:text-slate-200 text-left"><a className='' href={element.merchantLink}><FaEye className='text-2xl text-right'/></a></td>
+                    <tr key={index}>
+                      <td className="border-b dark:border-slate-600 font-medium p-4 pr-8 pt-0 pb-3 text-slate-400 dark:text-slate-800 text-left">{element.productName}</td>
+                      <td className="border-b dark:border-slate-600 font-medium p-4 pr-8 pt-0 pb-3 text-slate-400 dark:text-slate-800 text-left">{element.merchantName}</td>
+                      <td className="border-b dark:border-slate-600 font-medium p-4 pr-8 pt-0 pb-3 text-slate-400 dark:text-slate-800 text-left">{element.price}</td>
+                      <td className="border-b dark:border-slate-600 font-medium p-4 pr-8 pt-0 pb-3 text-slate-400 dark:text-slate-800 text-left"><a className='' href={element.merchantLink}><FaEye className='text-2xl text-right'/></a></td>
                     </tr>
                   );
                   })}
                   </tbody>
                 </table>
                 </div>
-           
           </section>
       </div>
     </LoadingOverlay>

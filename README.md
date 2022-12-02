@@ -3,6 +3,7 @@
 If you are able to download the ZIP file from the GitHub try the following:
 - Extract the files onto your current directory
 - From the current directory cd into cpsc254_project folder
+- Run the command: [npm install]
 - Run the command: [npm run dev]
 - Run Test Cases: [npm run test]
 
