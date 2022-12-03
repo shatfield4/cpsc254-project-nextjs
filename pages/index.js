@@ -1,8 +1,8 @@
 import Image from 'next/image';
 import { useState } from 'react';
-import Header from './header';
 import LoadingOverlay from 'react-loading-overlay-ts';
 import { FaSearch, FaEye } from 'react-icons/fa'; 
+import Navbar from '../components/Navbar';
 
 
 export default function Home() {
@@ -43,7 +43,7 @@ export default function Home() {
       text="Searching...">
       <div className='h-screen'>
           <div className=''>
-            <Header />
+            <Navbar/>
           </div>
           <hr />
           <div className='flex justify-center items-center flex-col pt-8 pb-8'>
