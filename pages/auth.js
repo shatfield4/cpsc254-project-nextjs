@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import Navbar from '../components/Navbar'
 import axios from 'axios'
 import Alert from '../components/Alert'
-import jwt_decode from 'jwt-decode'
 import useAuthStore from '../store/auth'
 import { setUser } from '../utils/setUser'
 import { useRouter } from 'next/router'
@@ -11,7 +10,6 @@ const initialState = {firstName:'', lastName:'', email:'', password:'', confirmP
 
 const auth = () => {
 
-  const [check, setCheck] = useState(false)
   const [formData, setFormData] = useState(initialState)
   const [alertMessage, setAlertMessage] = useState('')
   const [isSignup, setIsSignup] = useState(false)
@@ -106,7 +104,7 @@ const auth = () => {
                           }
                           { isSignup && <div className="flex items-start">
                               <div className="flex items-center h-5">
-                                <input onChange={() => setCheck(prev => !prev)} id="terms" aria-describedby="terms" type="checkbox" className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-primary-600 dark:ring-offset-gray-800" required/>
+                                <input id="terms" aria-describedby="terms" type="checkbox" className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-primary-600 dark:ring-offset-gray-800" required/>
                               </div>
                               <div className="ml-3 text-sm">
                                 <label className="font-light text-black dark:text-gray-300">I accept the <a className="font-medium text-primary-600 hover:underline dark:text-primary-500" href="#">Terms and Conditions</a></label>
