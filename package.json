@@ -12,15 +12,17 @@
   "dependencies": {
     "@blazity/next-image-proxy": "^1.0.2",
     "apify-client": "^2.6.1",
-    "axios": "^1.1.3",
+    "axios": "^1.2.0",
     "cheerio": "^1.0.0-rc.12",
     "cors": "^2.8.5",
+    "jwt-decode": "^3.1.2",
     "next": "13.0.3",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-icons": "^4.7.1",
     "react-loading-overlay-ts": "^2.0.0",
-    "save-dev": "^0.0.1-security"
+    "save-dev": "^0.0.1-security",
+    "zustand": "^4.1.4"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.13",
