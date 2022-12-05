@@ -8,7 +8,7 @@ import { useRouter } from 'next/router'
 
 const initialState = {firstName:'', lastName:'', email:'', password:'', confirmPassword:''}
 
-const auth = () => {
+const Auth = () => {
 
   const [formData, setFormData] = useState(initialState)
   const [alertMessage, setAlertMessage] = useState('')
@@ -123,4 +123,4 @@ const auth = () => {
   )
 }
 
-export default auth
+export default Auth
