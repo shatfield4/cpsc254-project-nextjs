@@ -1,4 +1,3 @@
-import { useState, useEffect } from 'react'
 // Copyright 2022 Cyrus Baybay Sean Hatfield Rina Watanabe 
 
 // cyrusbaybay@csu.fullerton.edu
@@ -20,6 +19,7 @@ import { useState, useEffect } from 'react'
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+import { useState, useEffect } from 'react'
 import '../styles/globals.css'
 
 
